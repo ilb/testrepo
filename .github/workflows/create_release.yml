@@ -27,6 +27,7 @@ jobs:
         DATE=$(date +%Y.%m.%d)
         RELEASE_NUMBER=$(git tag -l "$DATE.*" | wc -l)
         VERSION="$DATE.$((RELEASE_NUMBER + 1))"
+        git tag
         echo $DATE
         echo $VERSION
         echo $RELEASE_NUMBER
