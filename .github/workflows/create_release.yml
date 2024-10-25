@@ -31,7 +31,7 @@ jobs:
 
     - name: Update package.json version
       run: |
-        jq '.version = "${{ steps.get_version.outputs.version }}"' package.json > temp.json && mv temp.json package.json
+        jq 'version = "${{ steps.get_version.outputs.version }}"' package.json > temp.json && mv temp.json package.json
 
     - name: Configure git
       run: |
