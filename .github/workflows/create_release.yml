@@ -18,8 +18,11 @@ jobs:
       with:
         node-version: '14'
 
-    - name: Install jq
-      run: sudo apt-get install -y jq
+    - name: Fetch tags
+      run: git fetch --tags
+
+    - name: List tags
+      run: git tag -l
 
     - name: Get current date and release number
       id: get_version
@@ -27,7 +30,10 @@ jobs:
         DATE=$(date +%Y.%m.%d)
         RELEASE_NUMBER=$(git tag -l "$DATE.*" | wc -l)
         VERSION="$DATE.$((RELEASE_NUMBER + 1))"
-        echo "::set-output name=version::$VERSION"
+        echo $DATE
+        echo $VERSION
+        echo $RELEASE_NUMBER
+        echo "version={$VERSION}" >> $GITHUB_OUTPUT
 
     - name: Update package.json version
       run: |
