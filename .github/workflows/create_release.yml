@@ -1,8 +1,9 @@
 name: Update Version on Merge
 
 on:
-  pull_request:
-    types: [created]
+  push:
+    branches:
+      - master
 
 jobs:
   update-version:
