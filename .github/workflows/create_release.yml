@@ -33,7 +33,7 @@ jobs:
         echo $DATE
         echo $VERSION
         echo $RELEASE_NUMBER
-        echo "version={$VERSION}" >> $GITHUB_OUTPUT
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
 
     - name: Update package.json version
       run: |
